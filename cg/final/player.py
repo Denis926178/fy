@@ -80,8 +80,8 @@ class Player:
         self.shooting_allowed = True
  
     def respawn(self):
-        self.x = 300
-        self.y = 400
+        self.x = PLAYER_START_X
+        self.y = PLAYER_START_Y
         self.angle = 0
         self.draw()
 
@@ -90,26 +90,10 @@ class Player:
         self.tk_image = ImageTk.PhotoImage(rotated_image)
         self.canvas.itemconfig(self.id, image=self.tk_image)
         self.canvas.coords(self.id, self.x, self.y)
-    
-    # def draw(self):
-    #     rotated_image = self.image_boost.rotate(-self.angle, expand=True)
-    #     self.tk_image_boost = ImageTk.PhotoImage(rotated_image)
-    #     self.canvas.itemconfig(self.id, image=self.tk_image_boost)
-    #     self.canvas.coords(self.id, self.x, self.y)
 
     def move_forward(self):
-        self.x += self.speed * sin(radians(self.angle))
-        self.y -= self.speed * cos(radians(self.angle))
-
-        if self.x < -self.size / 2:
-            self.x = 600 + self.size / 4
-        elif self.x > 675 + self.size / 2:
-            self.x = 0
-
-        if self.y < -self.size / 2:
-            self.y = 800 + self.size / 4
-        elif self.y > 800 + self.size / 2:
-            self.y = 0
+        self.x = (self.x + self.speed * sin(radians(self.angle))) % (CANVAS_WIDTH + self.size)
+        self.y = (self.y - self.speed * cos(radians(self.angle))) % (CANVAS_HEIGTH + self.size)
 
     def turn_left(self):
         self.angle -= 10

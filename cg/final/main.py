@@ -3,6 +3,7 @@ import tkinter as tk
 from player import *
 from bullet import *
 from asteroid import *
+from explosion import *
 
 class App:
     def __init__(self, root):
@@ -30,7 +31,7 @@ class App:
         self.text_label.pack(pady=20)
 
         self.__game_frame = tk.Frame(self.__root, width=CANVAS_WIDTH, height=CANVAS_HEIGTH, background="yellow")
-        self.__game_frame.pack(side=tk.RIGHT, fill=tk.BOTH, expand=True)
+        self.__game_frame.pack(side=tk.RIGHT, fill=tk.BOTH)
 
         self.start_button = tk.Button(self.__game_frame, text="Start", command=self.__init_game_window)
         self.start_button.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
@@ -39,7 +40,7 @@ class App:
         self.lives_label.place(x=10, y=10)
 
         self.score_label = tk.Label(self.__game_frame, text="Score: " + str(self.__score))
-        self.score_label.place(x=600, y=10)
+        self.score_label.place(x=CANVAS_WIDTH - 70, y=10)
 
     def __init_canvas_binds(self):
         self.__root.bind("<w>", lambda e: self.__player.set_moving_forward(True))
@@ -60,8 +61,8 @@ class App:
     def __init_game_window(self):
         self.__destroy_start_window()
 
-        self.__canvas = tk.Canvas(self.__root, width=600, height=800, bg="white")
-        self.__canvas.pack(side=tk.RIGHT, fill=tk.BOTH, expand=True)
+        self.__canvas = tk.Canvas(self.__root, width=CANVAS_WIDTH, height=CANVAS_HEIGTH, bg="white")
+        self.__canvas.pack(side=tk.RIGHT, fill=tk.BOTH)
 
         self.__player = Player(self.__canvas)
         self.__asteroids = []
@@ -109,8 +110,13 @@ class App:
         obj1_coords = self.__canvas.coords(obj1.id)
         obj2_coords = self.__canvas.coords(obj2.id)
 
-        distance = ((obj1_coords[0] - obj2_coords[0]) ** 2 + (obj1_coords[1] - obj2_coords[1]) ** 2) ** 0.5
-        return distance < (obj1.size + obj2.size) / 2
+        distance = ((obj1_coords[0] - obj2_coords[0]) ** 2 + (obj1_coords[1] - obj2_coords[1]) ** 2)
+
+        if distance < ((obj1.size + obj2.size) / 2) ** 2:
+            Explosion(self.__canvas, obj1_coords[0], obj1_coords[1])
+            return True
+        
+        return False
 
     def __check_collision_bullet_asteroid(self):
         for bullet in self.__player.bullets[:]:
@@ -118,6 +124,7 @@ class App:
                 if self.__is_collision(bullet, asteroid):
                     self.__asteroids.remove(asteroid)
                     self.__player.bullets.remove(bullet)
+                    self.__canvas.delete(bullet.id)
                     return True
         
         return False

@@ -3,6 +3,10 @@ from PIL import Image, ImageTk, ImageDraw
 from constants import *
 
 class Bullet:
+    speed =        BULLET_SPEED
+    size =         BULLET_SIZE
+    max_distance = BULLET_MAX_DISTANCE
+
     def __init__(self, canvas, x, y, angle):
         self.canvas = canvas
         self.start_x = x
@@ -10,22 +14,22 @@ class Bullet:
         self.x =       x
         self.y =       y
         self.angle =   angle
-
-        self.speed =        BULLET_SPEED
-        self.size =         BULLET_SIZE
-        self.max_distance = BULLET_MAX_DISTANCE
         
-        self.image = self.create_gradient_orange_circle()
-        self.tk_image = ImageTk.PhotoImage(self.image)
-        self.id = self.canvas.create_image(self.x, self.y, image=self.tk_image)
+        if not hasattr(Bullet, 'tk_image'):
+            Bullet.image = self.create_gradient_orange_circle()
+            Bullet.tk_image = ImageTk.PhotoImage(self.image)
 
-    def create_gradient_orange_circle(self):
-        image = Image.new('RGBA', (self.size, self.size), (0, 0, 0, 0))
+        self.id = self.canvas.create_image(self.x, self.y, image=Bullet.tk_image)
+
+    @classmethod
+    def create_gradient_orange_circle(cls):
+        image = Image.new('RGBA', (cls.size, cls.size), (0, 0, 0, 0))
         draw = ImageDraw.Draw(image)
 
-        for i in range(self.size // 2, 0, -1):
-            color = (255, 165, 0, int(255 * (i / (self.size // 2))))
-            draw.ellipse((self.size // 2 - i, self.size // 2 - i, self.size // 2 + i, self.size // 2 + i), fill=color)
+        for i in range(cls.size // 2, 0, -1):
+            color = (255, 165, 0, int(255 * (i / (cls.size // 2))))
+            draw.ellipse((cls.size // 2 - i, cls.size // 2 - i,
+                           cls.size // 2 + i, cls.size // 2 + i), fill=color)
 
         return image
 
