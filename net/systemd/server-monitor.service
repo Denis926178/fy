@@ -1,0 +1,15 @@
+[Unit]
+Description=Server Monitoring Daemon
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/server-monitord --start
+Environment="LIB_DIR_MONITOR_SERVER=/usr/lib/server-monitor"
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
