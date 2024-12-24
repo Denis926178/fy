@@ -24,8 +24,8 @@ if [ ! -f "$MONITOR_HOSTS_FILE" ]; then
     touch "$MONITOR_HOSTS_FILE"
 fi
 
-monitor_active_servers 10 &
-monitor_servers_temperature 10 &
-monitor_servers_disk_space 10 &
+monitor_active_servers $TIMER_MONITOR_NEW_SERVERS &
+monitor_servers_temperature $TIMER_MONITOR_CPU_TEMPERATURE &
+monitor_servers_disk_space $TIMER_MONITOR_DISK_SPACE &
 
 wait
