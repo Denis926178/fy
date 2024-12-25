@@ -10,6 +10,7 @@ TEST_DIR=tests
 
 UTIL_FILE=src/core/$(PROJECT_NAME)-tool.sh
 DAEMON_FILE=src/core/$(PROJECT_NAME)d.sh
+SETTINGS_FILE=src/core/$(PROJECT_NAME)-settings.sh
 SYSTEMD_FILE=systemd/$(PROJECT_NAME).service
 
 HELPER_FILES=\
@@ -18,7 +19,6 @@ HELPER_FILES=\
 	src/lib/configuration.sh \
 	src/lib/info.sh \
 	src/lib/password.sh \
-	src/lib/settings.sh \
 	src/lib/server-control.sh
 
 .PHONY: all install uninstall install_util install_daemon install_lib install_systemd set-env-variable
@@ -31,10 +31,16 @@ COLOR_RED=\033[0;31m
 
 all: install set-env-variable unit_test enable-service
 
-install: install_util install_daemon install_lib install_systemd
+install: install_util install_settings install_daemon install_lib install_systemd
 
 install_util:
 	@echo -e "$(COLOR_GREEN)Установка основной утилиты в $(INSTALL_DIR):$(COLOR_RESET)"
+	@base_name=$$(basename "$(SETTINGS_FILE)" | sed 's/\(.*\)\..*/\1/') && \
+	echo -e "  $(COLOR_BLUE)$(SETTINGS_FILE) -> $(INSTALL_DIR)/$$base_name$(COLOR_RESET)" && \
+	install -Dm755 "$(SETTINGS_FILE)" "$(INSTALL_DIR)/$$base_name"
+
+install_settings:
+	@echo -e "$(COLOR_GREEN)Установка утилиты для настроек в $(INSTALL_DIR):$(COLOR_RESET)"
 	@base_name=$$(basename "$(UTIL_FILE)" | sed 's/\(.*\)\..*/\1/') && \
 	echo -e "  $(COLOR_BLUE)$(UTIL_FILE) -> $(INSTALL_DIR)/$$base_name$(COLOR_RESET)" && \
 	install -Dm755 "$(UTIL_FILE)" "$(INSTALL_DIR)/$$base_name"
