@@ -16,7 +16,7 @@ Available commands:
   call [--start --service=name --server=ip]   Запуск службы на сервере
   call [--restart --service=name --server=ip] Перезапуск службы на сервере
 
-  setting                                     Настройка всех параметров
+  settings                                    Настройка всех параметров
   settings [--VAR_NAME=VAR_VALUE]             Настроить значение конкретной переменной
 
   info []                                     Информация, указанная в конфигурации
@@ -113,56 +113,6 @@ run_call() {
     fi
 
     return 0
-}
-
-run_setting() {
-    if [[ $# -eq 0 ]]; then
-        run_settings "--all"
-        return 0
-    fi
-
-    local all=0
-    local collect_info=0
-    local crit_params=0
-    local log=0
-
-    while [[ $# -gt 0 ]]; do
-        case "$1" in
-            --all)
-                all=1
-                ;;
-            --collect-info)
-                restart_server=1
-                ;;
-            --crit-params)
-                update_server=1
-                ;;
-            --log)
-                restart_server=1
-                ;;
-            *)
-                echo "Неизвестный параметр: $1"
-                exit 1
-                ;;
-        esac
-        shift
-    done
-
-    if [[ "$all" == "1" ]]; then
-        call_settings "--all"
-    fi
-
-    if [[ "$collect_info" == "1" ]]; then
-        call_settings "--collect-info"
-    fi
-
-    if [[ "$crit_params" == "1" ]]; then
-        call_settings "--crit-params"
-    fi
-
-    if [[ "$log" == "1" ]]; then
-        call_settings "--log"
-    fi
 }
 
 run_info() {
@@ -374,10 +324,6 @@ main() {
     call)
         shift 1
         run_call "$@"
-        ;;
-    setting)
-        shift 1
-        run_setting "$@"
         ;;
     info)
         shift 1

@@ -50,9 +50,9 @@ create_container() {
 start_containers() {
     backup_config
 
-    $LIB_DIR_MONITOR_SERVER/settings.sh --MONITOR_HOSTS_FILE="$TEMP_DIR/monitor-hosts.conf"
-    $LIB_DIR_MONITOR_SERVER/settings.sh --PASSWORD_FILE="$TEMP_DIR/password.conf"
-    $LIB_DIR_MONITOR_SERVER/settings.sh --DEFAULT_NET="192.168.100.0/24"
+    server-monitor-settings --MONITOR_HOSTS_FILE="$TEMP_DIR/monitor-hosts.conf"
+    server-monitor-settings --PASSWORD_FILE="$TEMP_DIR/password.conf"
+    server-monitor-settings --DEFAULT_NET="192.168.100.0/24"
 
     mkdir -pv $TEMP_DIR
 
