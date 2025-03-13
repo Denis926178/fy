@@ -1,0 +1,10 @@
+/home/denis/learning/fy/java/2.1/src/main/java/com/example/demo/DemoApplication.java
+/home/denis/learning/fy/java/2.1/src/main/java/com/example/demo/config/SecurityConfig.java
+/home/denis/learning/fy/java/2.1/src/main/java/com/example/demo/controller/AuthController.java
+/home/denis/learning/fy/java/2.1/src/main/java/com/example/demo/controller/UserController.java
+/home/denis/learning/fy/java/2.1/src/main/java/com/example/demo/model/RegisteredUser.java
+/home/denis/learning/fy/java/2.1/src/main/java/com/example/demo/model/User.java
+/home/denis/learning/fy/java/2.1/src/main/java/com/example/demo/repository/RegisteredUserRepository.java
+/home/denis/learning/fy/java/2.1/src/main/java/com/example/demo/repository/UserRepository.java
+/home/denis/learning/fy/java/2.1/src/main/java/com/example/demo/service/RegisteredUserService.java
+/home/denis/learning/fy/java/2.1/src/main/java/com/example/demo/service/UserService.java

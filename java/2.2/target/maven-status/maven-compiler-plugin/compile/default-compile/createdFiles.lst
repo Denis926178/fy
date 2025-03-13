@@ -1,0 +1,16 @@
+com/example/demo/model/UserAction.class
+com/example/demo/model/RegisteredUser.class
+com/example/demo/service/UserActionService.class
+com/example/demo/repository/CurrencyRateRepository.class
+com/example/demo/DemoApplication.class
+com/example/demo/config/SecurityConfig.class
+com/example/demo/controller/AdminController.class
+com/example/demo/controller/HistoryController.class
+com/example/demo/repository/UserActionRepository.class
+com/example/demo/repository/RegisteredUserRepository.class
+com/example/demo/service/RegisteredUserService.class
+com/example/demo/model/CurrencyRate.class
+com/example/demo/config/DataInitializer.class
+com/example/demo/controller/UserController.class
+com/example/demo/service/CurrencyRateService.class
+com/example/demo/controller/AuthController.class

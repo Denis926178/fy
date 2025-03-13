@@ -1,0 +1,21 @@
+CREATE TABLE IF NOT EXISTS registered_users (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    role VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS currency_rates (
+    id SERIAL PRIMARY KEY,
+    currency VARCHAR(10) NOT NULL UNIQUE,
+    rate DOUBLE PRECISION NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS user_actions (
+    id SERIAL PRIMARY KEY,
+    user_id BIGINT NOT NULL,
+    action_type VARCHAR(50) NOT NULL,
+    details JSONB NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES registered_users(id)
+);

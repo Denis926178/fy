@@ -1,0 +1,25 @@
+.custom-datalist {
+    max-height: 150px; /* Ограничиваем высоту списка */
+    overflow-y: auto;  /* Добавляем скролл, если элементов много */
+    border: 1px solid #ccc; /* Граница списка */
+    border-radius: 4px; /* Закруглённые углы */
+    background-color: white; /* Фон списка */
+    display: none; /* Скрываем список по умолчанию */
+    position: absolute; /* Позиционируем абсолютно */
+    width: 100%; /* Ширина равна ширине родительского элемента */
+    box-sizing: border-box; /* Учитываем padding и border в ширине */
+    z-index: 1000; /* Поднимаем список над другими элементами */
+    margin-top: 5px; /* Небольшой отступ от поля ввода */
+    list-style-type: none; /* Убираем маркеры списка */
+    padding: 0; /* Убираем отступы */
+    margin: 0; /* Убираем внешние отступы */
+}
+
+.custom-datalist li {
+    padding: 8px; /* Внутренние отступы для элементов */
+    cursor: pointer; /* Курсор в виде указателя */
+}
+
+.custom-datalist li:hover {
+    background-color: #f8f9fa; /* Подсветка при наведении */
+}

@@ -1,0 +1,107 @@
+/* Общие стили для контейнера */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Занимает всю высоту экрана */
+    background-color: #f0f2f5;
+}
+
+/* Стили для блока формы */
+.login-box {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+/* Стили для заголовка */
+.login-box h2 {
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+/* Стили для формы */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Стили для группы полей ввода */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-weight: bold;
+    color: #555;
+}
+
+.form-group input {
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.form-group input:focus {
+    border-color: #2196F3;
+    outline: none;
+    box-shadow: 0 0 5px rgba(33, 150, 243, 0.5);
+}
+
+/* Стили для кнопки входа */
+.login-btn {
+    padding: 0.75rem;
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-btn:hover {
+    background-color: #1976D2;
+}
+
+/* Стили для сообщений об ошибках и успехе */
+.error-message {
+    color: #f44336;
+    margin-bottom: 1rem;
+}
+
+.success-message {
+    color: #4CAF50;
+    margin-bottom: 1rem;
+}
+
+/* Стили для ссылки на регистрацию */
+.register-link {
+    margin-top: 1rem;
+    color: #555;
+}
+
+.register-link a {
+    color: #2196F3;
+    text-decoration: none;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+.login-btn {
+    transition: transform 0.2s ease;
+}
+
+.login-btn:active {
+    transform: scale(0.95);
+}

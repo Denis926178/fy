@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Панель управления</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/admin-panel.css">
+</head>
+<body>
+    <div th:replace="~{fragments/navbar-after-register :: navbar}"></div>
+
+    <div class="container mx-auto">
+        <h1 class="text-center my-4">Панель управления</h1>
+        <p class="text-center">Добро пожаловать, администратор!</p>
+
+        <div class="card mb-4">
+            <div class="card-header">
+                <h2>Список пользователей</h2>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Имя пользователя</th>
+                                <th>Роль</th>
+                                <th>Статус</th>
+                                <th>Действия</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="user : ${users}">
+                                <td th:text="${user.id}"></td>
+                                <td th:text="${user.username}"></td>
+                                <td th:text="${user.role}"></td>
+                                <td>
+                                    <span th:if="${user.enabled}" class="badge bg-success">Активен</span>
+                                    <span th:unless="${user.enabled}" class="badge bg-danger">Заблокирован</span>
+                                </td>
+                                <td>
+                                    <a th:href="@{/admin/edit-user/{id}(id=${user.id})}" class="btn btn-sm btn-primary">Редактировать</a>
+                                    <a th:href="@{/admin/toggle-user/{id}(id=${user.id})}" class="btn btn-sm btn-warning">
+                                        <span th:if="${user.enabled}">Заблокировать</span>
+                                        <span th:unless="${user.enabled}">Разблокировать</span>
+                                    </a>
+                                    <a th:href="@{/admin/view-history/{id}(id=${user.id})}" class="btn btn-sm btn-info">История</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <a href="/admin/add-user" class="btn btn-success">Добавить пользователя</a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
