@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактирование пользователя</title>
+    <link rel="stylesheet" href="/css/edit.css">
+</head>
+<body>
+    <div class="edit-container">
+        <div class="edit-box">
+            <h2>Редактирование пользователя</h2>
+            <form th:action="@{/update}" method="post" class="edit-form">
+                <input type="hidden" name="id" th:value="${user.id}">
+
+                <div class="form-group">
+                    <label for="name">Имя:</label>
+                    <input type="text" id="name" name="name" th:value="${user.name}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" th:value="${user.email}" required>
+                </div>
+
+                <div class="button-container">
+                    <button type="submit" class="save-btn">Сохранить</button>
+                    <a href="/index" class="cancel-btn">Отмена</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

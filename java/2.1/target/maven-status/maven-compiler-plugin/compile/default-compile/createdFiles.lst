@@ -1,0 +1,10 @@
+com/example/demo/model/RegisteredUser.class
+com/example/demo/repository/UserRepository.class
+com/example/demo/repository/RegisteredUserRepository.class
+com/example/demo/service/RegisteredUserService.class
+com/example/demo/DemoApplication.class
+com/example/demo/config/SecurityConfig.class
+com/example/demo/controller/UserController.class
+com/example/demo/model/User.class
+com/example/demo/service/UserService.class
+com/example/demo/controller/AuthController.class

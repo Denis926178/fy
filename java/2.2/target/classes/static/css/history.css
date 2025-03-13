@@ -1,0 +1,21 @@
+.table-responsive {
+    overflow-x: visible; /* Убираем горизонтальный скролл */
+}
+
+table {
+    width: 100%; /* Таблица занимает всю ширину контейнера */
+    table-layout: fixed; /* Фиксированная ширина столбцов */
+}
+
+th, td {
+    word-wrap: break-word; /* Перенос слов, если текст не помещается */
+    white-space: normal; /* Разрешаем перенос текста на несколько строк */
+}
+
+th:nth-child(1), td:nth-child(1) { width: 20%; } /* Ширина для первого столбца */
+th:nth-child(2), td:nth-child(2) { width: 50%; } /* Ширина для второго столбца */
+th:nth-child(3), td:nth-child(3) { width: 30%; } /* Ширина для третьего столбца */
+
+.form-container {
+    max-width: 1000px;
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Navbar Fragment</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary" th:fragment="navbar">
+        <div class="container">
+            <a class="navbar-brand" th:href="@{/}">Главная</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/currency-converter}">Конвертер</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/ohm-law}">Закон ома</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/history}">История действий</a>
+                    </li>
+                    <li class="nav-item" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">
+                        <a class="nav-link" th:href="@{/admin/panel}">Панель управления</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</body>
+</html>

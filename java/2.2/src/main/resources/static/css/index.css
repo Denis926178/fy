@@ -1,0 +1,47 @@
+/* index.css */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin-right: 15px;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+.links a {
+    padding: 10px 20px;
+    text-decoration: none;
+    color: white;
+    background-color: #007bff;
+    border-radius: 4px;
+}
+
+.links a:hover {
+    background-color: #0056b3;
+}
+
+/* Блок с именем пользователя */
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-info span {
+    font-weight: bold;
+}
+
+.user-info .btn {
+    padding: 5px 10px;
+    font-size: 0.9em;
+}

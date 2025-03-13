@@ -1,0 +1,16 @@
+/home/denis/learning/fy/java/2.2/src/main/java/com/example/demo/DemoApplication.java
+/home/denis/learning/fy/java/2.2/src/main/java/com/example/demo/config/DataInitializer.java
+/home/denis/learning/fy/java/2.2/src/main/java/com/example/demo/config/SecurityConfig.java
+/home/denis/learning/fy/java/2.2/src/main/java/com/example/demo/controller/AdminController.java
+/home/denis/learning/fy/java/2.2/src/main/java/com/example/demo/controller/AuthController.java
+/home/denis/learning/fy/java/2.2/src/main/java/com/example/demo/controller/HistoryController.java
+/home/denis/learning/fy/java/2.2/src/main/java/com/example/demo/controller/UserController.java
+/home/denis/learning/fy/java/2.2/src/main/java/com/example/demo/model/CurrencyRate.java
+/home/denis/learning/fy/java/2.2/src/main/java/com/example/demo/model/RegisteredUser.java
+/home/denis/learning/fy/java/2.2/src/main/java/com/example/demo/model/UserAction.java
+/home/denis/learning/fy/java/2.2/src/main/java/com/example/demo/repository/CurrencyRateRepository.java
+/home/denis/learning/fy/java/2.2/src/main/java/com/example/demo/repository/RegisteredUserRepository.java
+/home/denis/learning/fy/java/2.2/src/main/java/com/example/demo/repository/UserActionRepository.java
+/home/denis/learning/fy/java/2.2/src/main/java/com/example/demo/service/CurrencyRateService.java
+/home/denis/learning/fy/java/2.2/src/main/java/com/example/demo/service/RegisteredUserService.java
+/home/denis/learning/fy/java/2.2/src/main/java/com/example/demo/service/UserActionService.java
